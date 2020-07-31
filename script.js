@@ -10,5 +10,4 @@ xhr.open("GET", "https://maps.googleapis.com/maps/api/place/findplacefromtext/js
 
 xhr.send();
 
-var apiKey = "AIzaSyCDaBMEesohdwFUDBgMjKcQltjY1uIQv1k";
 
