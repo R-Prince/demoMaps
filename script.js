@@ -1,24 +1,25 @@
 var xhr = new XMLHttpRequest();
 var searchText = document.getElementById('searchBar');
+const baseURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=";
+const key = "&inputtype=textquery&fields=photos,formatted_address,name,rating,price_level&key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o";
 
 document.querySelector('#searchBar').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-        console.log(searchText.value);
+        var searchInfo = searchText.value;
+        var searchBarInfo = searchInfo.replace(/ /gi, "%20");
+        xhr.open("GET", baseURL + searchBarInfo + key);
+        xhr.send(); 
         event.preventDefault()
     }
 });
 
 var search = function (){
-    console.log(searchText.value);
+    var searchInfo = searchText.value;
+    var searchBarInfo = searchInfo.replace(/ /gi, "%20");
     event.preventDefault()
+    xhr.open("GET", baseURL + searchBarInfo + key);
+    xhr.send(); 
 };
-
-/*searchText.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-    console.log(searchText.value);
-    }
-    event.preventDefault()
-});*/
 
 xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -33,9 +34,7 @@ xhr.onreadystatechange = function() {
     }
 };
 
-/* xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wembley%20Stadium&inputtype=textquery&fields=photos,formatted_address,name,rating,price_level&key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o");
 
-xhr.send(); */
 
 
 
