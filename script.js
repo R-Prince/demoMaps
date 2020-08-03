@@ -1,8 +1,8 @@
 var xhr = new XMLHttpRequest();
 var searchText = document.getElementById('searchBar');
 const baseURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=";
-const key = "&inputtype=textquery&fields=formatted_address,name,rating,price_level&key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o";
-
+const key = "&inputtype=textquery&fields=geometry,formatted_address,name,rating,price_level&key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o";
+var coord = false;
 
 
 document.querySelector('#searchBar').addEventListener('keypress', function (e) {
@@ -31,11 +31,33 @@ xhr.onreadystatechange = function() {
         document.getElementById('address').innerHTML = results.formatted_address;
         document.getElementById('rating').innerHTML = results.rating;
         document.getElementById('price').innerHTML = results.price_level;
-
+        coord = results.geometry.location;
         console.log(JSON.parse(this.responseText));
     }
-    
 };
+
+function showMap(){
+// Create the script tag, set the appropriate attributes
+var script = document.createElement('script');
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o&callback=initMap";
+script.defer = true;
+
+// Attach your callback function to the `window` object
+window.initMap = function() {
+   // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+    // The marker, positioned at Search bar text
+  var marker = new google.maps.Marker({position: coord, map: map});
+};
+// Append the 'script' element to 'head'
+document.head.appendChild(script);      
+}
+
+
+
 
 
 
