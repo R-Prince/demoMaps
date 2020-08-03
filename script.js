@@ -1,7 +1,9 @@
 var xhr = new XMLHttpRequest();
 var searchText = document.getElementById('searchBar');
 const baseURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=";
-const key = "&inputtype=textquery&fields=photos,formatted_address,name,rating,price_level&key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o";
+const key = "&inputtype=textquery&fields=formatted_address,name,rating,price_level&key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o";
+
+
 
 document.querySelector('#searchBar').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
@@ -16,9 +18,9 @@ document.querySelector('#searchBar').addEventListener('keypress', function (e) {
 var search = function (){
     var searchInfo = searchText.value;
     var searchBarInfo = searchInfo.replace(/ /gi, "%20");
-    event.preventDefault()
     xhr.open("GET", baseURL + searchBarInfo + key);
-    xhr.send(); 
+    xhr.send();
+    event.preventDefault()
 };
 
 xhr.onreadystatechange = function() {
@@ -32,7 +34,10 @@ xhr.onreadystatechange = function() {
 
         console.log(JSON.parse(this.responseText));
     }
+    
 };
+
+
 
 
 
