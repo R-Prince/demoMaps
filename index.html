@@ -15,7 +15,7 @@
             <h1>Google Place Search</h1>
             <form class="" id="searchForm">
                 <div class="row">
-                    <input id="searchBar" class="form-control col-8" type="text" placeholder="Search your next destination..."><button type="submit" onclick="search()" class="ml-2 btn btn-primary ">Search</button>
+                    <input id="searchBar" class="form-control col-8" type="text" placeholder="Search your next destination..."><button type="submit" onclick="search(); showMap();" class="ml-2 btn btn-primary ">Search</button>
                 </div>
             </form>
         </div>
@@ -38,7 +38,7 @@
                 <p>Rating: <span id="rating"></span></p>
             </div>
             <div class="pointField">
-                <button onclick="showMap()" class="btn btn-primary">Show on the map</button>
+                <button onclick="setCoord()" class="btn btn-primary">Show on the map</button>
             </div>
         </div>
         <div class="col-6" id="map"></div>
