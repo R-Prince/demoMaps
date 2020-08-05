@@ -15,7 +15,7 @@
             <h1>Google Place Search</h1>
             <form class="" id="searchForm">
                 <div class="row">
-                    <input id="searchBar" class="form-control col-8" type="text" placeholder="Search your next destination..."><button type="submit" onclick="search(); showMap();" class="ml-2 btn btn-primary ">Search</button>
+                    <input id="searchBar" class="form-control col-8" type="text" placeholder="Search your next destination..."><button type="submit" onclick="search()" class="ml-2 btn btn-primary ">Search</button>
                 </div>
             </form>
         </div>
@@ -37,8 +37,8 @@
             <div class="ratingField">
                 <p>Rating: <span id="rating"></span></p>
             </div>
-            <div class="pointField">
-                <button onclick="setCoord()" class="btn btn-primary">Show on the map</button>
+            <div class="point">
+                <button id="pointField" class="btn btn-primary">Show on the map</button>
             </div>
         </div>
         <div class="col-6" id="map"></div>
@@ -47,5 +47,9 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdBqz5aZKn5u3_GeKoUVzRZS6bsw33p_o&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
 </body>
 </html>
